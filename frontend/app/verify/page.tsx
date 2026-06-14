@@ -17,11 +17,14 @@ export default function VerifyPage() {
   };
 
   return (
-    <main className="max-w-xl mx-auto mt-20 px-4">
-      <h1 className="text-2xl font-bold mb-2">문서 검증</h1>
-      <p className="text-gray-500 mb-6">파일을 업로드하면 블록체인에서 원본 여부를 확인합니다.</p>
+    <main className="max-w-2xl mx-auto px-6 py-12">
+      <h1 className="text-2xl font-medium text-gray-900 mb-2">문서 검증</h1>
+      <p className="text-sm text-gray-500 mb-8">파일을 업로드하면 블록체인에서 원본 여부를 즉시 확인합니다.</p>
       <FileUploader onFile={handleFile} label="검증할 파일을 업로드하세요" />
-      {loading && <p className="mt-4 text-blue-500">검증 중...</p>}
+      <button disabled={loading}
+        className="mt-4 w-full py-3 rounded-xl bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium transition-colors disabled:opacity-50">
+        {loading ? "검증 중..." : "원본 검증"}
+      </button>
       {result && <VerifyResult {...result} />}
     </main>
   );
